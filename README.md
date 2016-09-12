@@ -24,7 +24,7 @@ captain([{
   since: '2016-09-10T12:00:00Z', // want to get them from a particular time?
   exclude: [13], // want to exclude a particular issue?
   prefix: ':tada:' // wants to prefix each issues with a special emoji 🎉?
-}])
+}] [, optionallyYourBasicAuth])
 ```
 
 will output
@@ -36,6 +36,8 @@ will output
 - :tada: [ ] #12 : Skeleton of IPLD v1 spec
 - :tada: [ ] #4 : Selectors: Use cases (from Q3 Workshop)
 ```
+
+See a better demo for `ipld/specs` ([code here](https://github.com/nicola/captain-log/blob/master/demo.js))
 
 ## Quick history
 
