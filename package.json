@@ -1,0 +1,23 @@
+{
+  "name": "captain-log",
+  "version": "0.1.0",
+  "description": "The log from your favorite captains",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicola/captain-log.git"
+  },
+  "author": "Nicola Greco <me@nicola.io> (http://nicolagreco.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicola/captain-log/issues"
+  },
+  "homepage": "https://github.com/nicola/captain-log#readme",
+  "dependencies": {
+    "async": "^2.0.1",
+    "request": "^2.74.0"
+  }
+}
