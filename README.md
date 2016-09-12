@@ -12,7 +12,7 @@ npm install captain-log
 
 ## Usage
 
-```
+```js
 const captain = require('captain-log')
 captain([{
   title: 'What happened (ongoing)', // This will be the title of this group of issues
