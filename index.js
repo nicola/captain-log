@@ -1,6 +1,5 @@
 const request = require('request')
 const async = require('async')
-const AUTH = process.env.CAPTAIN_LOG_API || ''
 
 function getIssues (config, callback) {
   // console.log(createQuery(config))
@@ -18,6 +17,7 @@ function getIssues (config, callback) {
 
 function display (config, data) {
   console.log(`### ${config.title}`)
+  // TODO if data is not array, complain, we have got an error
   data
     .filter(d => {
       if (config.exclude && config.exclude.includes(d.number)) {
@@ -35,7 +35,7 @@ function display (config, data) {
     .forEach(d => {
       let prefix = ''
       if (config.prefix) {
-        prefix += config.prefix
+        prefix += ' ' + config.prefix
       }
       if (config.todo) {
         prefix += ` [${d.state === 'closed' ? 'x' : ' '}]`
@@ -57,11 +57,14 @@ function configToUrl (config) {
 }
 
 function createQuery (config) {
-  return `https://${AUTH}@api.github.com/repos/${config.repo}/issues?${configToUrl(config)}`
+  return `https://${config.auth}@api.github.com/repos/${config.repo}/issues?${configToUrl(config)}`
 }
 
-function runConfigs (configs) {
+function runConfigs (configs, auth) {
   async.forEachSeries(configs, (config, done) => {
+    if (!config.auth) {
+      config.auth = auth || ''
+    }
     getIssues(config, function (err, data) {
       display(config, data)
       done(err)
