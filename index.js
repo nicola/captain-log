@@ -34,13 +34,17 @@ function display (config, data) {
     })
     .forEach(d => {
       let prefix = ''
+      d.number = '#' + d.number
       if (config.prefix) {
         prefix += ' ' + config.prefix
       }
       if (config.todo) {
         prefix += ` [${d.state === 'closed' ? 'x' : ' '}]`
       }
-      console.log(`-${prefix} #${d.number} : ${d.title}`)
+      if (config.issueLink) {
+        d.number = `[${d.number}](${d.url})`
+      }
+      console.log(`-${prefix} ${d.number} : ${d.title}`)
     //   console.log(d.labels.map(d => d.name).join(', '))
     })
 }

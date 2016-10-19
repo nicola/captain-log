@@ -8,7 +8,8 @@ const configs = [
     labels: [],
     exclude_labels: ['needs spec'],
     todo: true,
-    since: '2016-09-10T12:00:00Z',
+    since: '2016-09-18T12:00:00Z',
+    issueLink: true,
     exclude: [13]
   },
   {
@@ -18,7 +19,7 @@ const configs = [
     labels: [],
     exclude_labels: ['needs spec'],
     todo: true,
-    since: '2016-09-10T12:00:00Z',
+    since: '2016-09-18T12:00:00Z',
     exclude: [13]
   }, {
     title: 'To Agree',
