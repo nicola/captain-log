@@ -16,12 +16,24 @@ function getIssues (config, callback) {
 }
 
 function display (config, data) {
-  console.log(`### ${config.title}`)
   // TODO if data is not array, complain, we have got an error
   data
     .filter(d => {
       if (config.exclude && config.exclude.includes(d.number)) {
         return false
+      }
+      if (config.freshness) {
+        console.log('freshness')
+        const since = new Date(config.since)
+        const created_at = new Date(d.created_at)
+
+        if (config.freshness === 'new' && since < created_at) {
+          return false
+        }
+
+        if (config.freshness === 'updated' && since > created_at) {
+          return false
+        }
       }
       if (config.exclude_labels) {
         const excluded = d.labels
