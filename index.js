@@ -49,6 +49,18 @@ function display (config, data) {
       if (config.prefix) {
         prefix += ' ' + config.prefix
       }
+      if (config.type) {
+        if (config.type == 'pr') {
+          if (!d.pull_request) {
+            return false
+          }
+        }
+        if (config.type == 'issue') {
+          if (d.pull_request) {
+            return false
+          }
+        }
+      }
       if (config.todo) {
         prefix += ` [${d.state === 'closed' ? 'x' : ' '}]`
       }
