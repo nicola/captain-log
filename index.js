@@ -23,7 +23,6 @@ function display (config, data) {
         return false
       }
       if (config.freshness) {
-        console.log('freshness')
         const since = new Date(config.since)
         const created_at = new Date(d.created_at)
 
